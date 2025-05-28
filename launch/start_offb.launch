@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Include the MAVROS node with SITL and Gazebo -->
+	<include file="$(find px4)/launch/mavros_posix_sitl.launch">
+	    <arg name="world" default="$(find marker_world)/world/empty.world"/>
+		<arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/iris_fpv_cam/iris_fpv_cam.sdf"/>
+	</include>
+
+	<!-- Our node to control the drone -->
+	<node pkg="marker_world" type="arm_and_takeoff.py" name="offb_node_py" required="true" output="screen" />
+
+</launch>
